@@ -104,7 +104,12 @@ async function fetchProducts() {
         renderGrid(products);
     } catch (error) {
         console.error('Errore nel caricamento dei prodotti:', error);
-        gridElement.innerHTML = '<p style="text-align:center; width:100%;">Impossibile caricare i prodotti.</p>';
+        gridElement.innerHTML = '<p style="text-align:center; width:100%;">Impossibile caricare i prodotti. Riprova più tardi.</p>';
+    } finally {
+        console.log('Fetch products completed. Products count:', products.length);
+        if (products.length === 0) {
+            gridElement.innerHTML = '<p style="text-align:center; width:100%;">Nessun prodotto trovato.</p>';
+        }
     }
 }
 
