@@ -1,5 +1,5 @@
 // Configuration
-const ASSETS_BASE_URL = '../giulia-handmade-assets';
+const ASSETS_BASE_URL = 'https://TriSsSsSsS.github.io/giulia-handmade-assets';
 
 // DOM Elements
 const gridElement = document.querySelector('.product-grid');
