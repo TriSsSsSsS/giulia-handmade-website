@@ -6,7 +6,6 @@ const gridElement = document.querySelector('.product-grid');
 const modal = document.getElementById('product-modal');
 const closeModalBtn = document.querySelector('.close-modal');
 const filtersContainer = document.querySelector('.filters');
-const cursor = document.querySelector('.cursor');
 
 // State
 let products = [];
@@ -15,35 +14,11 @@ let swiper;
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    initPreloader();
     initSmoothScroll();
-    initCustomCursor();
     fetchProducts();
     setupEventListeners();
     initScrollAnimations();
 });
-
-// Preloader Animation
-function initPreloader() {
-    const tl = gsap.timeline();
-
-    tl.to('.preloader-text', {
-        opacity: 1,
-        duration: 1,
-        y: 0,
-        ease: 'power3.out'
-    })
-        .to('.preloader-text', {
-            opacity: 0,
-            duration: 0.5,
-            delay: 0.5
-        })
-        .to('.preloader', {
-            height: 0,
-            duration: 1,
-            ease: 'power3.inOut'
-        });
-}
 
 // Smooth Scroll (Lenis)
 function initSmoothScroll() {
@@ -64,46 +39,6 @@ function initSmoothScroll() {
     }
 
     requestAnimationFrame(raf);
-}
-
-// Custom Cursor
-function initCustomCursor() {
-    document.addEventListener('mousemove', (e) => {
-        gsap.to(cursor, {
-            x: e.clientX,
-            y: e.clientY,
-            duration: 0.1,
-            ease: 'power2.out'
-        });
-    });
-
-    // Magnetic Buttons & Hover States
-    const magneticElements = document.querySelectorAll('.magnetic');
-    magneticElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursor.classList.add('hovered');
-            gsap.to(el, { scale: 1.1, duration: 0.3 });
-        });
-        el.addEventListener('mouseleave', () => {
-            cursor.classList.remove('hovered');
-            gsap.to(el, { scale: 1, duration: 0.3 });
-            gsap.to(el, { x: 0, y: 0, duration: 0.3 }); // Reset magnetic
-        });
-
-        // Magnetic Effect
-        el.addEventListener('mousemove', (e) => {
-            const rect = el.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-
-            gsap.to(el, {
-                x: x * 0.3,
-                y: y * 0.3,
-                duration: 0.3,
-                ease: 'power2.out'
-            });
-        });
-    });
 }
 
 // Scroll Animations
@@ -130,20 +65,6 @@ function initScrollAnimations() {
             ease: 'back.out(1.7)'
         });
     });
-
-    // Parallax Images
-    gsap.utils.toArray('.parallax-img').forEach((container, i) => {
-        gsap.to(container, {
-            backgroundPosition: `50% ${innerHeight / 2}px`,
-            ease: "none",
-            scrollTrigger: {
-                trigger: container,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true
-            }
-        });
-    });
 }
 
 // Fetch Data
@@ -153,32 +74,30 @@ async function fetchProducts() {
         products = await response.json();
         renderGrid(products);
     } catch (error) {
-        console.error('Error loading products:', error);
-        gridElement.innerHTML = '<p style="text-align:center; width:100%;">Failed to load products.</p>';
+        console.error('Errore nel caricamento dei prodotti:', error);
+        gridElement.innerHTML = '<p style="text-align:center; width:100%;">Impossibile caricare i prodotti.</p>';
     }
 }
 
 // Render Grid
 function renderGrid(items) {
-    // Clear grid
     gridElement.innerHTML = '';
 
     items.forEach(product => {
         const item = document.createElement('div');
-        // Add classes for filtering (Category, Colors, etc.)
+        // Add classes for filtering by material
         const classes = ['product-item'];
-        if (product.category) classes.push(product.category);
+        if (product.material) classes.push(product.material);
         if (product.colors) classes.push(...product.colors);
 
         item.className = classes.join(' ');
 
-        // Use first image or placeholder
         const imagePath = product.images && product.images.length > 0
             ? `${ASSETS_BASE_URL}/${product.images[0]}`
-            : 'https://via.placeholder.com/400x400?text=No+Image';
+            : 'https://via.placeholder.com/400x400?text=Nessuna+Immagine';
 
         item.innerHTML = `
-            <div class="product-card magnetic">
+            <div class="product-card">
                 <img src="${imagePath}" alt="${product.name}" class="product-img">
                 <div class="product-info">
                     <h3 class="product-name">${product.name}</h3>
@@ -187,15 +106,9 @@ function renderGrid(items) {
         `;
 
         item.addEventListener('click', () => openModal(product));
-
-        // Add hover effect for cursor
-        item.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
-        item.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-
         gridElement.appendChild(item);
     });
 
-    // Initialize Isotope after images load
     setTimeout(() => {
         initIsotope();
     }, 100);
@@ -216,11 +129,9 @@ function setupEventListeners() {
     filtersContainer.addEventListener('click', (e) => {
         if (!e.target.classList.contains('filter-btn')) return;
 
-        // Update active class
         document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
         e.target.classList.add('active');
 
-        // Filter isotope
         const filterValue = e.target.getAttribute('data-filter');
         iso.arrange({ filter: filterValue });
     });
@@ -231,7 +142,6 @@ function setupEventListeners() {
 
 // Open Modal
 function openModal(product) {
-    // Populate details
     document.getElementById('modal-title').textContent = product.name;
     document.getElementById('modal-description').textContent = product.description;
 
@@ -257,14 +167,12 @@ function openModal(product) {
             swiperWrapper.appendChild(slide);
         });
     } else {
-        swiperWrapper.innerHTML = '<div class="swiper-slide"><img src="https://via.placeholder.com/400x400?text=No+Image"></div>';
+        swiperWrapper.innerHTML = '<div class="swiper-slide"><img src="https://via.placeholder.com/400x400?text=Nessuna+Immagine"></div>';
     }
 
-    // Show Modal
     modal.style.display = 'block';
-    document.body.style.overflow = 'hidden'; // Disable background scroll
+    document.body.style.overflow = 'hidden';
 
-    // Init Swiper
     if (swiper) swiper.destroy();
     swiper = new Swiper('.product-swiper', {
         pagination: {
@@ -273,7 +181,6 @@ function openModal(product) {
         loop: true
     });
 
-    // Animation
     gsap.from('.modal-content', { y: 50, opacity: 0, duration: 0.3 });
 }
 

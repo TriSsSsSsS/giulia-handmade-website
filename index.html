@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Giulia Handmade</title>
+    <title>Giulia Handmade - Borsette Artigianali Fatte a Mano</title>
+    <meta name="description"
+        content="Borsette uniche fatte a mano da Giulia. Ogni pezzo è realizzato con cura e passione, intrecciato a mano con materiali di alta qualità.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
 
     <!-- Swiper CSS -->
@@ -25,20 +27,12 @@
 
 <body>
 
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="preloader-text">Giulia Handmade</div>
-    </div>
-
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
-
     <!-- Header -->
     <header>
         <div class="container">
-            <div class="logo magnetic">Giulia Handmade</div>
+            <div class="logo">Giulia Handmade</div>
             <nav>
-                <a href="#catalog" class="magnetic">Catalog</a>
+                <a href="#catalogo">Collezione</a>
             </nav>
         </div>
     </header>
@@ -46,50 +40,48 @@
     <!-- Hero Section -->
     <section id="hero">
         <div class="hero-content">
-            <h1 class="reveal-text">Handmade Elegance</h1>
-            <p class="reveal-text">Unique pieces, crafted with love.</p>
-            <a href="#catalog" class="btn-primary magnetic">Discover</a>
+            <h1>Borsette Uniche Fatte a Mano</h1>
+            <p class="hero-subtitle">Ogni pezzo è realizzato con passione e cura artigianale</p>
+            <a href="#catalogo" class="btn-primary">Scopri la Collezione</a>
+        </div>
+    </section>
+
+    <!-- Chi Sono Section -->
+    <section id="chi-sono">
+        <div class="container">
+            <div class="chi-sono-content">
+                <h2>Ciao, sono Giulia</h2>
+                <p>Sono la creatrice di borsette uniche, realizzate interamente a mano con materiali di alta qualità.
+                </p>
+                <p>Ogni borsa è intrecciata con cura e passione da me a mano, per offrire un accessorio elegante e
+                    originale che completi ogni tuo look.</p>
+                <p class="missione"><strong>La mia missione</strong> è creare pezzi esclusivi che uniscano stile,
+                    funzionalità e artigianalità, realizzati con amore in ogni dettaglio.</p>
+            </div>
         </div>
     </section>
 
     <!-- Marquee Section -->
     <div class="marquee-container">
         <div class="marquee">
-            <span>Handmade in Italy — Unique Designs — Sustainable Fashion — </span>
-            <span>Handmade in Italy — Unique Designs — Sustainable Fashion — </span>
+            <span>Fatto a Mano in Italia — Design Unico — Artigianalità — </span>
+            <span>Fatto a Mano in Italia — Design Unico — Artigianalità — </span>
         </div>
     </div>
 
-    <!-- Editorial Sections -->
-    <section id="editorial">
-        <!-- Content injected via JS or static -->
-        <div class="editorial-block">
-            <div class="editorial-text">
-                <h2 class="reveal-text">The Art of Detail</h2>
-                <p class="reveal-text">Every stitch tells a story.</p>
-            </div>
-            <div class="editorial-image parallax-img" style="background-color: #D4A59A;"></div>
-        </div>
-        <div class="editorial-block alt">
-            <div class="editorial-text">
-                <h2 class="reveal-text">Sustainable Fashion</h2>
-                <p class="reveal-text">Eco-friendly materials, timeless style.</p>
-            </div>
-            <div class="editorial-image parallax-img" style="background-color: #9CAF88;"></div>
-        </div>
-    </section>
-
     <!-- Catalog Section -->
-    <section id="catalog">
+    <section id="catalogo">
         <div class="container">
-            <h2 class="reveal-text">Collection</h2>
+            <h2>La Collezione</h2>
+            <p class="catalog-intro">Esplora la collezione e trova la borsetta perfetta per te. Ogni modello è pensato
+                per aggiungere un tocco speciale al tuo stile personale.</p>
 
             <!-- Filters -->
             <div class="filters">
-                <button class="filter-btn active magnetic" data-filter="*">All</button>
-                <button class="filter-btn magnetic" data-filter=".Bags">Bags</button>
-                <button class="filter-btn magnetic" data-filter=".Totes">Totes</button>
-                <button class="filter-btn magnetic" data-filter=".Clutches">Clutches</button>
+                <button class="filter-btn active" data-filter="*">Tutti</button>
+                <button class="filter-btn" data-filter=".velluto">Velluto</button>
+                <button class="filter-btn" data-filter=".cotone">Cotone</button>
+                <button class="filter-btn" data-filter=".ecopelle">Ecopelle</button>
             </div>
 
             <!-- Grid -->
@@ -102,7 +94,7 @@
     <!-- Product Modal -->
     <div id="product-modal" class="modal">
         <div class="modal-content">
-            <button class="close-modal magnetic"><i class="fa-solid fa-xmark"></i></button>
+            <button class="close-modal"><i class="fa-solid fa-xmark"></i></button>
 
             <div class="swiper product-swiper">
                 <div class="swiper-wrapper">
@@ -112,18 +104,26 @@
             </div>
 
             <div class="product-details">
-                <h2 id="modal-title">Product Name</h2>
+                <h2 id="modal-title">Nome Prodotto</h2>
                 <div class="tags" id="modal-tags">
                     <!-- Tags injected via JS -->
                 </div>
-                <p id="modal-description">Description goes here.</p>
+                <p id="modal-description">Descrizione del prodotto.</p>
 
-                <a href="#" id="modal-buy-btn" class="btn-buy magnetic" target="_blank">
-                    Buy on Vinted <i class="fa-solid fa-bag-shopping"></i>
+                <a href="#" id="modal-buy-btn" class="btn-buy" target="_blank">
+                    Acquista su Vinted <i class="fa-solid fa-shopping-bag"></i>
                 </a>
             </div>
         </div>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Giulia Handmade. Fatto con amore a mano.</p>
+            <p><a href="https://www.vinted.it/member/112570499" target="_blank">Visita il mio negozio Vinted</a></p>
+        </div>
+    </footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
