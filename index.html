@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giulia Handmade</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-text">Giulia Handmade</div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo magnetic">Giulia Handmade</div>
+            <nav>
+                <a href="#catalog" class="magnetic">Catalog</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1 class="reveal-text">Handmade Elegance</h1>
+            <p class="reveal-text">Unique pieces, crafted with love.</p>
+            <a href="#catalog" class="btn-primary magnetic">Discover</a>
+        </div>
+    </section>
+
+    <!-- Marquee Section -->
+    <div class="marquee-container">
+        <div class="marquee">
+            <span>Handmade in Italy — Unique Designs — Sustainable Fashion — </span>
+            <span>Handmade in Italy — Unique Designs — Sustainable Fashion — </span>
+        </div>
+    </div>
+
+    <!-- Editorial Sections -->
+    <section id="editorial">
+        <!-- Content injected via JS or static -->
+        <div class="editorial-block">
+            <div class="editorial-text">
+                <h2 class="reveal-text">The Art of Detail</h2>
+                <p class="reveal-text">Every stitch tells a story.</p>
+            </div>
+            <div class="editorial-image parallax-img" style="background-color: #D4A59A;"></div>
+        </div>
+        <div class="editorial-block alt">
+            <div class="editorial-text">
+                <h2 class="reveal-text">Sustainable Fashion</h2>
+                <p class="reveal-text">Eco-friendly materials, timeless style.</p>
+            </div>
+            <div class="editorial-image parallax-img" style="background-color: #9CAF88;"></div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section id="catalog">
+        <div class="container">
+            <h2 class="reveal-text">Collection</h2>
+
+            <!-- Filters -->
+            <div class="filters">
+                <button class="filter-btn active magnetic" data-filter="*">All</button>
+                <button class="filter-btn magnetic" data-filter=".Bags">Bags</button>
+                <button class="filter-btn magnetic" data-filter=".Totes">Totes</button>
+                <button class="filter-btn magnetic" data-filter=".Clutches">Clutches</button>
+            </div>
+
+            <!-- Grid -->
+            <div class="product-grid">
+                <!-- Products injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal magnetic"><i class="fa-solid fa-xmark"></i></button>
+
+            <div class="swiper product-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slides injected via JS -->
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="product-details">
+                <h2 id="modal-title">Product Name</h2>
+                <div class="tags" id="modal-tags">
+                    <!-- Tags injected via JS -->
+                </div>
+                <p id="modal-description">Description goes here.</p>
+
+                <a href="#" id="modal-buy-btn" class="btn-buy magnetic" target="_blank">
+                    Buy on Vinted <i class="fa-solid fa-bag-shopping"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
