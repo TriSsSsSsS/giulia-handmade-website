@@ -6,6 +6,8 @@ const gridElement = document.querySelector('.product-grid');
 const modal = document.getElementById('product-modal');
 const closeModalBtn = document.querySelector('.close-modal');
 const filtersContainer = document.querySelector('.filters');
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('nav-menu');
 
 // State
 let products = [];
@@ -14,11 +16,38 @@ let swiper;
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+    initHamburgerMenu();
     initSmoothScroll();
     fetchProducts();
     setupEventListeners();
     initScrollAnimations();
 });
+
+// Hamburger Menu
+function initHamburgerMenu() {
+    if (!hamburger || !navMenu) return;
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Close menu when clicking on a link
+    navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }
+    });
+}
 
 // Smooth Scroll (Lenis)
 function initSmoothScroll() {
