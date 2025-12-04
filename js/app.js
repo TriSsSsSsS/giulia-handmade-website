@@ -8,6 +8,7 @@ const closeModalBtn = document.querySelector('.close-modal');
 const filtersContainer = document.querySelector('.filters');
 const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('nav-menu');
+const featuredWrapper = document.getElementById('featured-wrapper');
 
 // State
 let products = [];
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchProducts();
     setupEventListeners();
     initScrollAnimations();
+    initScrollIndicator();
 });
 
 // Hamburger Menu
@@ -101,13 +103,24 @@ async function fetchProducts() {
     try {
         const response = await fetch(`${ASSETS_BASE_URL}/json/products.json?t=${Date.now()}`);
         products = await response.json();
-        renderGrid(products);
+        
+        // Render grid only if element exists (collezione page)
+        if (gridElement) {
+            renderGrid(products);
+        }
+        
+        // Render featured carousel only if element exists (index page)
+        if (featuredWrapper) {
+            renderFeaturedProducts(products);
+        }
     } catch (error) {
         console.error('Errore nel caricamento dei prodotti:', error);
-        gridElement.innerHTML = '<p style="text-align:center; width:100%; color: red;">Impossibile caricare i prodotti. Riprova più tardi.</p>';
+        if (gridElement) {
+            gridElement.innerHTML = '<p style="text-align:center; width:100%; color: red;">Impossibile caricare i prodotti. Riprova più tardi.</p>';
+        }
     } finally {
         console.log('Fetch products completed. Products count:', products.length);
-        if (products.length === 0) {
+        if (gridElement && products.length === 0) {
             gridElement.innerHTML = '<p style="text-align:center; width:100%;">Nessun prodotto trovato.</p>';
         }
     }
@@ -160,19 +173,88 @@ function initIsotope() {
 
 // Setup Event Listeners
 function setupEventListeners() {
-    // Filters
-    filtersContainer.addEventListener('click', (e) => {
-        if (!e.target.classList.contains('filter-btn')) return;
+    // Filters (only if filters exist on page)
+    if (filtersContainer) {
+        filtersContainer.addEventListener('click', (e) => {
+            if (!e.target.classList.contains('filter-btn')) return;
 
-        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-        e.target.classList.add('active');
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            e.target.classList.add('active');
 
-        const filterValue = e.target.getAttribute('data-filter');
-        iso.arrange({ filter: filterValue });
+            const filterValue = e.target.getAttribute('data-filter');
+            iso.arrange({ filter: filterValue });
+        });
+    }
+
+    // Modal (only if modal exists)
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', closeModal);
+    }
+}
+
+// Render Featured Products Carousel
+function renderFeaturedProducts(items) {
+    // Show max 6 featured products
+    const featuredItems = items.slice(0, 6);
+    
+    featuredItems.forEach(product => {
+        const imagePath = product.images && product.images.length > 0
+            ? `${ASSETS_BASE_URL}/${product.images[0]}`
+            : 'https://via.placeholder.com/400x400?text=Nessuna+Immagine';
+
+        const slide = document.createElement('div');
+        slide.className = 'swiper-slide';
+        slide.innerHTML = `
+            <div class="featured-slide">
+                <img src="${imagePath}" alt="${product.name}">
+                <div class="featured-slide-info">
+                    <h3>${product.name}</h3>
+                    <p>${product.material || 'Fatto a mano'}</p>
+                </div>
+            </div>
+        `;
+        
+        slide.addEventListener('click', () => openModal(product));
+        featuredWrapper.appendChild(slide);
     });
 
-    // Modal
-    closeModalBtn.addEventListener('click', closeModal);
+    // Initialize Swiper
+    setTimeout(() => {
+        new Swiper('.featured-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                },
+                900: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+    }, 100);
+}
+
+// Scroll Indicator
+function initScrollIndicator() {
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        scrollIndicator.addEventListener('click', () => {
+            const nextSection = document.getElementById('chi-sono');
+            if (nextSection) {
+                nextSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
 }
 
 // Open Modal

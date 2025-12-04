@@ -103,21 +103,16 @@ nav a:hover {
 #hero {
     min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(rgba(93, 78, 55, 0.3), rgba(93, 78, 55, 0.3)),
-        url('https://TriSsSsSsS.github.io/giulia-handmade-assets/logo/profile.png');
+    background: url('https://TriSsSsSsS.github.io/giulia-handmade-assets/logo/profile.png');
     background-size: cover;
-    background-position: center 20%;
+    background-position: center top;
     background-attachment: fixed;
     position: relative;
     padding: var(--spacing-xl) var(--spacing-sm);
-    /* 
-       To manage the position and size of the background image:
-       - background-position: center; (you can change 'center' to 'top', 'bottom', or '50% 50%')
-       - background-size: cover; (you can change 'cover' to 'contain' or a percentage e.g. '100%')
-    */
+    padding-bottom: calc(var(--spacing-xl) * 2);
 }
 
 .hero-content {
@@ -600,4 +595,338 @@ footer a:hover {
         color: var(--color-rose-gold);
         text-shadow: none;
     }
+
+    .chi-sono-grid {
+        flex-direction: column;
+    }
+
+    .features-grid,
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .cta-buttons a {
+        width: 100%;
+    }
+}
+
+/* Hero Overlay for better text readability */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%);
+    pointer-events: none;
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: var(--spacing-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    z-index: 3;
+}
+
+.scroll-indicator i {
+    font-size: 2rem;
+    color: var(--color-cream);
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* Chi Sono Grid Layout */
+.chi-sono-grid {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.chi-sono-image {
+    flex: 0 0 300px;
+}
+
+.chi-sono-image img {
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.chi-sono-content {
+    flex: 1;
+    text-align: left;
+}
+
+.btn-secondary {
+    display: inline-block;
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background-color: transparent;
+    color: var(--color-terracotta);
+    border: 2px solid var(--color-terracotta);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+    letter-spacing: 2px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border-radius: 2px;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-terracotta);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Features Section */
+#features {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-cream);
+}
+
+#features h2 {
+    text-align: center;
+    font-size: clamp(2.2rem, 6vw, 3rem);
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-deep-brown);
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.feature-card {
+    background: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto var(--spacing-md);
+    background: linear-gradient(135deg, var(--color-terracotta), var(--color-rose-gold));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-icon i {
+    font-size: 2rem;
+    color: white;
+}
+
+.feature-card h3 {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-deep-brown);
+}
+
+.feature-card p {
+    font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+    color: var(--color-rose-gold);
+    line-height: 1.6;
+}
+
+/* Featured Products Section */
+#featured-products {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-warm-beige);
+}
+
+#featured-products h2 {
+    text-align: center;
+    font-size: clamp(2.2rem, 6vw, 3rem);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-deep-brown);
+}
+
+.section-subtitle {
+    text-align: center;
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+    color: var(--color-rose-gold);
+    font-style: italic;
+    margin-bottom: var(--spacing-xl);
+}
+
+.featured-swiper {
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md) 0;
+}
+
+.featured-slide {
+    background: var(--color-white);
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    height: auto;
+}
+
+.featured-slide:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.featured-slide img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
+.featured-slide-info {
+    padding: var(--spacing-md);
+    text-align: center;
+}
+
+.featured-slide-info h3 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+    color: var(--color-deep-brown);
+    margin-bottom: var(--spacing-xs);
+}
+
+.featured-slide-info p {
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    color: var(--color-rose-gold);
+}
+
+.view-all-container {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--color-terracotta);
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--color-terracotta);
+}
+
+/* Process Section */
+#process {
+    padding: var(--spacing-xl) 0;
+    background-color: var(--color-white);
+}
+
+#process h2 {
+    text-align: center;
+    font-size: clamp(2.2rem, 6vw, 3rem);
+    margin-bottom: var(--spacing-xl);
+    color: var(--color-deep-brown);
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.process-step {
+    text-align: center;
+    padding: var(--spacing-lg);
+}
+
+.step-number {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    font-weight: 600;
+    color: var(--color-warm-beige);
+    line-height: 1;
+    margin-bottom: var(--spacing-sm);
+}
+
+.process-step h3 {
+    font-size: clamp(1.2rem, 3vw, 1.4rem);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-deep-brown);
+}
+
+.process-step p {
+    font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+    color: var(--color-rose-gold);
+    line-height: 1.6;
+}
+
+/* CTA Section */
+#cta {
+    padding: calc(var(--spacing-xl) * 1.5) 0;
+    background: linear-gradient(135deg, var(--color-terracotta), var(--color-rose-gold));
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: clamp(2rem, 6vw, 3rem);
+    color: white;
+    margin-bottom: var(--spacing-md);
+}
+
+.cta-content p {
+    font-size: clamp(1.1rem, 3vw, 1.3rem);
+    color: var(--color-cream);
+    margin-bottom: var(--spacing-lg);
+}
+
+.cta-buttons {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    align-items: center;
+}
+
+.cta-buttons .btn-primary {
+    background-color: white;
+    color: var(--color-terracotta);
+}
+
+.cta-buttons .btn-primary:hover {
+    background-color: var(--color-deep-brown);
+    color: white;
+}
+
+.cta-buttons .btn-secondary {
+    background-color: transparent;
+    color: white;
+    border-color: white;
+}
+
+.cta-buttons .btn-secondary:hover {
+    background-color: white;
+    color: var(--color-terracotta);
 }

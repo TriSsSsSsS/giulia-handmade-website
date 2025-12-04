@@ -41,24 +41,33 @@
 
     <!-- Hero Section -->
     <section id="hero">
+        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Borsette Uniche Fatte a Mano</h1>
-            <p class="hero-subtitle">Ogni pezzo è realizzato con passione e cura artigianale</p>
+            <h1 class="reveal-text">Borsette Uniche Fatte a Mano</h1>
+            <p class="hero-subtitle reveal-text">Ogni pezzo è realizzato con passione e cura artigianale</p>
             <a href="collezione.html" class="btn-primary">Scopri la Collezione</a>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
         </div>
     </section>
 
     <!-- Chi Sono Section -->
     <section id="chi-sono">
         <div class="container">
-            <div class="chi-sono-content">
-                <h2>Ciao, sono Giulia</h2>
-                <p>Sono la creatrice di queste borsette realizzate interamente a mano con materiali di alta qualità.
-                </p>
-                <p>Ogni borsa è intrecciata con cura e passione da me a mano, per offrire un accessorio elegante e
-                    originale che completi ogni tuo look.</p>
-                <p class="missione"><strong>La mia missione</strong> è creare pezzi esclusivi che uniscano stile,
-                    funzionalità e artigianalità, realizzati con amore in ogni dettaglio.</p>
+            <div class="chi-sono-grid">
+                <div class="chi-sono-image">
+                    <img src="https://TriSsSsSsS.github.io/giulia-handmade-assets/logo/logo.png" alt="Giulia">
+                </div>
+                <div class="chi-sono-content">
+                    <h2 class="reveal-text">Ciao, sono Giulia</h2>
+                    <p>Sono la creatrice di queste borsette realizzate interamente a mano con materiali di alta qualità.</p>
+                    <p>Ogni borsa è intrecciata con cura e passione da me a mano, per offrire un accessorio elegante e
+                        originale che completi ogni tuo look.</p>
+                    <p class="missione"><strong>La mia missione</strong> è creare pezzi esclusivi che uniscano stile,
+                        funzionalità e artigianalità, realizzati con amore in ogni dettaglio.</p>
+                    <a href="collezione.html" class="btn-secondary">Vedi i Miei Lavori</a>
+                </div>
             </div>
         </div>
     </section>
@@ -71,24 +80,103 @@
         </div>
     </div>
 
-    <!-- Catalog Section -->
-    <section id="catalogo">
+    <!-- Features Section -->
+    <section id="features">
         <div class="container">
-            <h2>La Collezione</h2>
-            <p class="catalog-intro">Esplora la collezione e trova la borsetta perfetta per te. Ogni modello è pensato
-                per aggiungere un tocco speciale al tuo stile personale.</p>
+            <h2 class="reveal-text">Perché Scegliere le Mie Borsette</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hands"></i>
+                    </div>
+                    <h3>100% Fatto a Mano</h3>
+                    <p>Ogni borsetta è realizzata interamente a mano, con cura e attenzione ai minimi dettagli.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Materiali Premium</h3>
+                    <p>Utilizzo solo materiali di alta qualità: velluto, ecopelle e cotone selezionati.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Design Unici</h3>
+                    <p>Ogni pezzo è un'opera d'arte unica, impossibile da replicare perfettamente.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Personalizzabili</h3>
+                    <p>Posso creare la tua borsetta ideale con colori e stili su misura per te.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <!-- Filters -->
-            <div class="filters">
-                <button class="filter-btn active" data-filter="*">Tutti</button>
-                <button class="filter-btn" data-filter=".velluto">Velluto</button>
-                <button class="filter-btn" data-filter=".cotone">Cotone</button>
-                <button class="filter-btn" data-filter=".ecopelle">Ecopelle</button>
+    <!-- Featured Products Carousel -->
+    <section id="featured-products">
+        <div class="container">
+            <h2 class="reveal-text">Prodotti in Evidenza</h2>
+            <p class="section-subtitle">Alcune delle mie creazioni più amate</p>
+            
+            <div class="swiper featured-swiper">
+                <div class="swiper-wrapper" id="featured-wrapper">
+                    <!-- Slides injected via JS -->
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
             </div>
 
-            <!-- Grid -->
-            <div class="product-grid">
-                <!-- Products injected via JS -->
+            <div class="view-all-container">
+                <a href="collezione.html" class="btn-primary">Vedi Tutta la Collezione</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process">
+        <div class="container">
+            <h2 class="reveal-text">Il Processo Creativo</h2>
+            <div class="process-grid">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <h3>Selezione Materiali</h3>
+                    <p>Scelgo personalmente i migliori tessuti e materiali per ogni progetto.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <h3>Design e Pianificazione</h3>
+                    <p>Creo il design unico della borsetta, pensando a ogni dettaglio.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <h3>Lavorazione Artigianale</h3>
+                    <p>Intreccio e cucio a mano con precisione e passione.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <h3>Controllo Qualità</h3>
+                    <p>Verifico che ogni borsetta sia perfetta prima della consegna.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Pronta a Trovare la Tua Borsetta Perfetta?</h2>
+                <p>Esplora la collezione completa e scopri quale modello fa per te</p>
+                <div class="cta-buttons">
+                    <a href="collezione.html" class="btn-primary">Esplora la Collezione</a>
+                    <a href="https://www.vinted.it/member/112570499" target="_blank" class="btn-secondary">Visita Vinted</a>
+                </div>
             </div>
         </div>
     </section>
@@ -107,9 +195,18 @@
 
             <div class="product-details">
                 <h2 id="modal-title">Nome Prodotto</h2>
-                <div class="tags" id="modal-tags">
-                    <!-- Tags injected via JS -->
+                <div class="product-meta">
+                    <div class="meta-item">
+                        <strong>Materiale:</strong> <span id="modal-material"></span>
+                    </div>
+                    <div class="meta-item">
+                        <strong>Colori:</strong> <span id="modal-colors"></span>
+                    </div>
+                    <div class="meta-item">
+                        <strong>Stile:</strong> <span id="modal-style"></span>
+                    </div>
                 </div>
+                <div class="tags" id="modal-tags"></div>
                 <p id="modal-description">Descrizione del prodotto.</p>
 
                 <a href="#" id="modal-buy-btn" class="btn-buy" target="_blank">
