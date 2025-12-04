@@ -220,26 +220,23 @@ function renderFeaturedProducts(items) {
 
     // Initialize Swiper with autoplay and elegant effect
     setTimeout(() => {
-        // Detect mobile
-        const isMobile = window.innerWidth <= 768;
-        
         new Swiper('.featured-swiper', {
-            effect: isMobile ? 'slide' : 'coverflow',
+            effect: 'coverflow',
             grabCursor: true,
             centeredSlides: true,
             slidesPerView: 'auto',
             loop: true,
             autoplay: {
-                delay: isMobile ? 4000 : 3000,
+                delay: 3000,
                 disableOnInteraction: false,
-                pauseOnMouseEnter: !isMobile,
+                pauseOnMouseEnter: true,
             },
             coverflowEffect: {
-                rotate: isMobile ? 0 : 20,
+                rotate: 20,
                 stretch: 0,
-                depth: isMobile ? 100 : 200,
+                depth: 200,
                 modifier: 1,
-                slideShadows: !isMobile,
+                slideShadows: true,
             },
             pagination: {
                 el: '.swiper-pagination',
@@ -250,7 +247,6 @@ function renderFeaturedProducts(items) {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-            spaceBetween: isMobile ? 15 : 0,
         });
     }, 100);
 }
