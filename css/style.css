@@ -113,6 +113,11 @@ nav a:hover {
     background-attachment: fixed;
     position: relative;
     padding: var(--spacing-xl) var(--spacing-sm);
+    /* 
+       Per gestire posizione e dimensione dell'immagine di sfondo:
+       - background-position: center; (puoi cambiare 'center' con 'top', 'bottom', o '50% 50%')
+       - background-size: cover; (puoi cambiare 'cover' con 'contain' o una percentuale es. '100%')
+    */
 }
 
 .hero-content {
