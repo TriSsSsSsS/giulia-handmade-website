@@ -281,8 +281,8 @@ function openModal(product) {
     const buyBtn = document.getElementById('modal-buy-btn');
     buyBtn.href = product.linkVinted || '#';
 
-    // Swiper Images
-    const swiperWrapper = document.querySelector('.swiper-wrapper');
+    // Swiper Images - use the modal's swiper wrapper specifically
+    const swiperWrapper = document.querySelector('.product-swiper .swiper-wrapper');
     swiperWrapper.innerHTML = '';
 
     if (product.images && product.images.length > 0) {
