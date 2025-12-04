@@ -603,10 +603,33 @@ footer a:hover {
     .chi-sono-grid {
         flex-direction: column;
     }
+    
+    .chi-sono-image {
+        flex: 0 0 200px;
+        margin: 0 auto var(--spacing-md);
+    }
 
     .features-grid,
     .process-grid {
         grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    /* Riduci padding generale su mobile */
+    #chi-sono,
+    #features,
+    #process {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    /* Font più piccoli su mobile */
+    h2 {
+        font-size: clamp(1.8rem, 5vw, 2.5rem) !important;
+    }
+    
+    .feature-card,
+    .process-step {
+        padding: var(--spacing-md);
     }
 
     .cta-buttons {
@@ -616,6 +639,11 @@ footer a:hover {
 
     .cta-buttons a {
         width: 100%;
+    }
+    
+    /* Scroll indicator più piccolo */
+    .scroll-indicator i {
+        font-size: 1.5rem;
     }
 }
 
@@ -866,8 +894,41 @@ footer a:hover {
     }
     
     .featured-swiper .swiper-slide {
-        width: 250px;
-        height: 350px;
+        width: 280px;
+        height: 400px;
+    }
+    
+    /* Nascondi hint desktop su mobile */
+    .desktop-only {
+        display: none;
+    }
+    
+    /* Nascondi navigazione frecce su mobile */
+    .swiper-button-next,
+    .swiper-button-prev {
+        display: none;
+    }
+    
+    /* Semplifica pagination su mobile */
+    .featured-swiper .swiper-pagination {
+        bottom: -30px;
+    }
+    
+    /* Overlay sempre visibile su mobile */
+    .featured-slide-overlay {
+        transform: translateY(0);
+        background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 70%, transparent 100%);
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+    
+    /* Riduci padding sezione featured */
+    #featured-products {
+        padding: var(--spacing-lg) 0;
+    }
+    
+    .featured-swiper {
+        padding: var(--spacing-lg) 0;
+        margin-bottom: var(--spacing-md);
     }
 }
 
