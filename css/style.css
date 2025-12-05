@@ -113,10 +113,9 @@ nav a:hover {
     justify-content: center;
     text-align: center;
     background: url('https://officialblog.github.io/giulia-handmade-assets/logo/profile.png');
-    background-size: 85%;
+    background-size: cover;
     background-position: center top;
     background-attachment: fixed;
-    background-repeat: no-repeat;
     position: relative;
     padding: var(--spacing-xl) var(--spacing-sm);
     padding-bottom: calc(var(--spacing-xl) * 2);
@@ -609,7 +608,7 @@ footer a i {
 @media (max-width: 768px) {
     #hero {
         background-attachment: scroll;
-        background-position: center center;
+        background-position: center;
         background-size: cover;
         flex-direction: column;
         padding-top: calc(var(--spacing-xl) + 80px);
